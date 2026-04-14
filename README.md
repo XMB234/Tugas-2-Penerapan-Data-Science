@@ -49,8 +49,8 @@ pip install pandas==2.2.2 numpy==2.0.2 matplotlib==3.10.0 seaborn==0.13.2 scikit
 **Setup environment (Streamlit App):**
 ```bash
 # Clone repository
-git clone https://github.com/username/jaya-jaya-institut-dropout-predictor.git
-cd jaya-jaya-institut-dropout-predictor
+git clone https://github.com/XMB234/Tugas-2-Penerapan-Data-Science.git
+cd Tugas-2-Penerapan-Data-Science
 
 # Install dependencies
 pip install -r requirements.txt
