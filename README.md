@@ -99,6 +99,47 @@ Menampilkan angka ringkasan utama:
 ### Filter Dashboard
 Dashboard dilengkapi dengan 6 filter interaktif: **Status**, **Risk Category**, **Program Studi**, **Gender**, **Beasiswa**, dan **Kelas** — memungkinkan pengamat mengeksplorasi data secara mendalam.
 
+### Cara Mengakses Dashboard Metabase
+
+**Prasyarat:** Install [Docker](https://www.docker.com/products/docker-desktop/) terlebih dahulu.
+
+**Step 1 — Jalankan container Metabase:**
+```bash
+docker run -d -p 3000:3000 --name metabase metabase/metabase
+```
+Tunggu sekitar 1–2 menit hingga Metabase selesai starting up.
+
+**Step 2 — Copy file database ke dalam container:**
+```bash
+# Copy konfigurasi dashboard (questions, chart, filter, koneksi)
+docker cp metabase.db.mv.db metabase:/metabase.db/metabase.db.mv.db
+
+# Copy data mahasiswa (sumber data chart dashboard)
+docker cp jaya_jaya_institut.db metabase:/tmp/jaya_jaya_institut.db
+```
+
+**Step 3 — Restart container agar konfigurasi ter-load:**
+```bash
+docker restart metabase
+```
+
+**Step 4 — Akses dashboard:**
+
+Buka browser dan akses:
+```
+http://localhost:3000
+```
+
+Login dengan kredensial berikut:
+```
+Email    : root@mail.com
+Password : root123
+```
+
+Setelah login, pilih dashboard **"Jaya Jaya Institut — Student Performance Monitor"** dari halaman utama Metabase.
+
+> **Catatan:** File `metabase.db.mv.db` berisi seluruh konfigurasi dashboard (queries, charts, filter). File `jaya_jaya_institut.db` berisi data mahasiswa yang ditampilkan di setiap chart. Keduanya wajib ada agar dashboard dapat berjalan dengan benar.
+
 ---
 
 ## Menjalankan Sistem Machine Learning
